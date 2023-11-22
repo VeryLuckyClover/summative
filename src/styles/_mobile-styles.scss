@@ -1,0 +1,538 @@
+
+// Default Styling
+* {
+    border: none;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body.no-scroll {
+    overflow-y: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+// Hamburger Styling
+
+.nav-links {
+    display: none;
+}
+
+.nav-links a:hover {
+    color: $accent-color;
+}
+  
+.nav-link-container {
+    width: 100%;
+}
+
+.mobile-menu-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $secondary-color;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+
+}
+
+#mobile-menu {
+    width: 100%;
+    list-style-type: none;
+}
+
+#mobile-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    display: block;
+    text-align: center;
+    margin-top: 80px;
+    font-weight: 700;
+}
+  
+#close-nav-menu {
+    background: transparent;
+    z-index: 2;
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    font-size: 53px;
+    color: $primary-color;
+}
+
+// Nav Styling
+
+nav {
+    background-color: $secondary-color;
+    padding: 20px;
+    top: 0;
+    z-index: 1;
+    position: sticky;
+
+    .nav-flex-container {
+        display: flex;
+        align-items: center;
+
+        .logo-container {
+            img {
+                width: 45%;
+            }
+        }
+
+        .menu-container {
+
+            #menu-button {
+                background: transparent;
+                cursor: pointer;
+
+                svg {
+                    font-size: 40px;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+// Button Styling
+#hero-btn-styling {
+    width: 100%;
+    height: 35px;
+    font-family: $font-family-1;
+}
+
+.book-now-btn {
+    margin-top: 30px;
+    background-color: $accent-color;
+    color: $primary-color;
+    font-family: $font-family-1;
+    cursor: pointer;
+}
+
+.learn-more-btn {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 50%;
+    height: 40px;
+    color: $primary-color;
+    background-color: $accent-color;
+    font-family: $font-family-1;
+    cursor: pointer;
+}
+
+// Paragraph Styling
+
+p {
+    font-family: $font-family-1;
+    font-weight: $font-weight-regular;
+    font-size: $mobile-p-size;
+}
+
+// Image Styling
+
+.page-img-styling {
+    width: 100%;
+    margin-bottom: 35px;
+}
+
+// Home Page Styling
+
+.hero-container {
+    height: 65vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../assets/images/banner.png");
+
+    .hero-inner-container {
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 100%;
+        padding: 15px;
+        color: $primary-color;
+    }
+}
+
+.hero-heading-section {
+
+    margin-top: 40px;
+
+    h3 {
+        font-family: $font-family-2;
+        font-weight: $font-weight-regular;
+        font-size: $mobile-h3-size;
+        margin-bottom: 5px;
+    }
+
+    h1 {
+        font-family: $font-family-1;
+        font-weight: $font-weight-bold;
+        font-size: $mobile-h1-size;
+        margin-bottom: 10px;
+    }
+}
+
+.home-services-container {
+    padding: 15px;
+
+    .heading-section {
+
+        margin-top: 40px;
+    
+        h2 {
+            font-family: $font-family-2;
+            font-weight: $font-weight-bold;
+            font-size: $mobile-h2-size;
+            margin-bottom: 5px;
+        }
+    
+        h4 {
+            font-family: $font-family-1;
+            font-weight: $font-weight-bold;
+            font-size: $mobile-h4-size;
+            margin-bottom: 20px;
+            color: $accent-color;
+        }
+    }
+}
+
+.home-workshops-container {
+    padding: 15px;
+    text-align: right;
+
+    .heading-section {
+
+        margin-top: 40px;
+    
+        h2 {
+            font-family: $font-family-2;
+            font-weight: $font-weight-bold;
+            font-size: $mobile-h2-size;
+            margin-bottom: 5px;
+        }
+    
+        h4 {
+            font-family: $font-family-1;
+            font-weight: $font-weight-bold;
+            font-size: $mobile-h4-size;
+            margin-bottom: 20px;
+            color: $accent-color;
+        }
+    }
+}
+
+.home-products-container {
+    background-image: url("../assets/images/stone.png");
+    color: $primary-color;
+    padding: 15px;
+    font-family: $font-family-1;
+    font-size: $mobile-p-size;
+    font-weight: $font-weight-regular;
+
+    .heading-section {
+        margin-top: 40px;
+    
+        h2 {
+            font-family: $font-family-2;
+            font-weight: $font-weight-bold;
+            font-size: $mobile-h2-size;
+            margin-bottom: 5px;
+        }
+    
+        h4 {
+            font-family: $font-family-1;
+            font-weight: $font-weight-bold;
+            font-size: $mobile-h4-size;
+            margin-bottom: 20px;
+            color: $primary-color;
+        }
+    }
+
+    .page-img-styling {
+        margin-top: 40px;
+    }
+
+    .learn-more-btn {
+        background-color: $primary-color;
+        color: $secondary-color;
+        margin-bottom: 10px;
+    }
+}
+
+.reviews-container {
+    padding: 15px;
+
+    .heading-section {
+
+        margin-top: 40px;
+    
+        h2 {
+            font-family: $font-family-2;
+            font-weight: $font-weight-bold;
+            font-size: $mobile-h2-size;
+            margin-bottom: 5px;
+        }
+    
+        h4 {
+            font-family: $font-family-1;
+            font-weight: $font-weight-bold;
+            font-size: $mobile-h4-size;
+            margin-bottom: 20px;
+            color: $accent-color;
+        }
+    }
+}
+
+// About Page Styling
+
+.about-container {
+    padding: 15px;
+
+    .heading-section {
+
+        margin-top: 40px;
+    
+        h2 {
+            font-family: $font-family-2;
+            font-weight: $font-weight-bold;
+            font-size: $mobile-h2-size;
+            margin-bottom: 5px;
+        }
+    
+        h4 {
+            font-family: $font-family-1;
+            font-weight: $font-weight-bold;
+            font-size: $mobile-h4-size;
+            margin-bottom: 50px;
+            color: $accent-color;
+        }
+    }
+}
+
+.sub-section {
+    h6 {
+        font-family: $font-family-2;
+        font-weight: $font-weight-bold;
+        font-size: $mobile-h6-size;
+        margin-bottom: 5px;
+    }
+
+    h3 {
+        font-family: $font-family-1;
+        font-weight: $font-weight-bold;
+        font-size: $mobile-h3-size;
+        color: $accent-color;
+    }
+
+    p {
+        padding-top: 20px;
+        margin-bottom: 35px;
+    }
+
+    li {
+        font-family: $font-family-1;
+        font-size: $mobile-p-size;
+        font-weight: $font-weight-regular;   
+    }
+}
+
+// Service Page
+
+.services-header {
+    padding: 15px;
+
+    .heading-section {
+
+        margin-top: 40px;
+    
+        h2 {
+            font-family: $font-family-2;
+            font-weight: $font-weight-bold;
+            font-size: $mobile-h2-size;
+            margin-bottom: 5px;
+        }
+    
+        h4 {
+            font-family: $font-family-1;
+            font-weight: $font-weight-bold;
+            font-size: $mobile-h4-size;
+            margin-bottom: 20px;
+            color: $accent-color;
+        }
+    }
+}
+
+.services-container {
+    padding: 15px;
+
+    img {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    h4 {
+        font-family: $font-family-1;
+        font-weight: $font-weight-bold;
+        font-size: $mobile-h4-size;
+    }
+
+    h3 {
+        color: $accent-color;
+        font-family: $font-family-1;
+        font-weight: $font-weight-regular;
+        font-size: $mobile-p-size;
+    }
+
+}
+
+// Contact Page Styling
+
+.contact-container {
+    padding: 15px;
+
+    .heading-section {
+
+        margin-top: 40px;
+    
+        h2 {
+            font-family: $font-family-2;
+            font-weight: $font-weight-bold;
+            font-size: $mobile-h2-size;
+            margin-bottom: 5px;
+        }
+    
+        h4 {
+            font-family: $font-family-1;
+            font-weight: $font-weight-bold;
+            font-size: $mobile-h4-size;
+            margin-bottom: 50px;
+            color: $accent-color;
+        }
+    }
+
+    .feedback-input {
+        color: $accent-color;
+        font-family: $font-family-1;
+        font-weight: $font-weight-bold;
+        font-size: $mobile-p-size;
+        line-height: 22px;
+        background-color: transparent;
+        border:2px solid $secondary-color;
+        padding: 10px;
+        margin-bottom: 15px;
+        width:100%;
+        box-sizing: border-box;
+        outline:0;
+    }
+    
+    textarea {
+        height: 150px;
+        line-height: 150%;
+        resize:vertical;
+    }
+
+    #hero-btn-styling {
+        background-color: $accent-color;
+        color: $primary-color;
+        cursor: pointer;
+        margin-bottom: 35px;
+    }
+
+    .map-content {
+        width:100%;
+        border: 2px solid $secondary-color;
+    }
+}
+
+// Confirmation Section Styling
+
+.confirmation-section {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $secondary-color;
+    color: $primary-color;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 70%;
+    text-align: center;
+
+    h2 {
+        font-family: $font-family-1;
+        font-weight: $font-weight-bold;
+        font-size: $mobile-h1-size;  
+    }
+
+    h4 {
+        font-family: $font-family-2;
+        font-weight: $font-weight-bold;
+        font-size: $mobile-h4-size;
+        margin-bottom: 5px;    
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    #hero-btn-styling {
+        width: 100%;
+        height: 35px;
+        font-family: $font-family-1;
+        background-color: $accent-color;
+        color: $primary-color;
+    }
+}
+
+.reviews-container {
+    padding: 15px;
+
+    .review-imgs {
+
+        img {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+    }
+}
+
+.footer-container {
+    background-color: $secondary-color;
+    color: $primary-color;
+    padding: 15px;
+
+    .footer-links {
+        display: flex;
+        justify-content: space-evenly;
+
+        .link-styling {
+            color: $primary-color;
+            list-style: none;
+        }
+    }
+
+    .socials {
+        display: flex;
+        padding-top: 50px;
+        justify-content: space-evenly;
+
+        .social-link {
+            color: $primary-color;
+        }
+    }
+    
+    .footer-blurb {
+        display: flex;
+        padding-top: 20px;
+        justify-content: space-evenly;
+        text-align: center;
+    }
+}
