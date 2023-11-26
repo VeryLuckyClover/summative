@@ -1,6 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 // Images 
@@ -16,28 +15,42 @@ const Services = () => {
 
   const [services, setServices] = useState ([])
   const [workshops, setWorkshops] = useState ([]) // Empty array until it gets the data from Woocommerce
+  const [loading, setLoading] = useState(true)
+
+  const servicesEndPoint = `${baseURL}/services?_embed`
+
+  const workshopEndPoint = `${baseURL}/workshop?_embed`
 
   useEffect(() => {
-    axios.get(`${baseURL}/services?_embed`)
-    .then((res) => {
-      console.log(res.data)
-      setServices(res.data)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-  }, [])
+    setLoading(true)
+ 
+    // fetch services data
+    const fetchServices = axios.get(servicesEndPoint)
 
-  useEffect(() => {
-    axios.get(`${baseURL}/workshop?_embed`)
-    .then((res) => {
-      console.log(res.data)
-      setWorkshops(res.data)
-    })
+    // fetch workshop data
+    const fetchWorkshop = axios.get(workshopEndPoint)
+
+    axios.all([fetchServices, fetchWorkshop])
+    .then(axios.spread((...responses) => {
+      const servicesResponse = responses[0]
+      const workshopResponses = responses[1]
+ 
+      setServices(servicesResponse.data)
+      setWorkshops(workshopResponses.data)
+      setLoading(false)
+      // const timeout = setTimeout(() => setLoading(false), 1000);
+    }))
     .catch((err) => {
       console.log(err)
+      setLoading(false)
     })
+
   }, [])
+  
+  if(loading) { 
+    return(
+    <div>loading</div>
+    ) }
 
   return (
     <>
@@ -78,7 +91,7 @@ const Services = () => {
 
           <p>Romiromi includes a deeper layer of healing that affects the function of the internal organs. This service...</p>
 
-          <Link to='/servicesposts'>
+          <Link to={`/servicesposts/${services[1].id}`}>
             <button className="learn-more-btn">Learn More</button>
           </Link>
         </div>
@@ -94,7 +107,7 @@ const Services = () => {
 
           <p>Manawa Ora Mirimiri & Workshops teach Mirimiri and traditional Maori healing as a way to reconnect people...</p>
 
-          <Link to='/servicesposts'>
+          <Link to={`/workshopposts/${workshops[0].id}`}>
             <button className="learn-more-btn">Learn More</button>
           </Link>
         </div>

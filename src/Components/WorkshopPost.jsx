@@ -6,10 +6,10 @@ import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom"
 
 
-const ServicesPosts = () => {
+const WorkshopPost = () => {
   const baseUrl = import.meta.env.VITE_WP_API_BASEURL;
   const { id } = useParams();
-  const [service, setService] = useState(null);
+  const [workshop, setWorkshop] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -17,12 +17,12 @@ const ServicesPosts = () => {
 
     // Check if id is defined before making the API request
     if (id) {
-      const endpoint = `${baseUrl}/services/${id}?_embed`;
+      const endpoint = `${baseUrl}/workshop/${id}?_embed`;
 
       axios
         .get(endpoint)
         .then((res) => {
-          setService(res.data);
+          setWorkshop(res.data);
           setLoading(false);
         })
         .catch((err) => console.log(err));
@@ -36,12 +36,12 @@ const ServicesPosts = () => {
   }
 
   // Check if service is null before accessing its properties
-  if (!service) {
+  if (!workshop) {
     return <>Service not found</>;
   }
 
   // Extract headings and their respective information from the content
-  const htmlContent = service.content.rendered;
+  const htmlContent = workshop.content.rendered;
   const parser = new DOMParser();
   const doc = parser.parseFromString(htmlContent, 'text/html');
   const headings = doc.querySelectorAll('strong'); // Assuming headings are wrapped in <strong> tags
@@ -60,9 +60,9 @@ const ServicesPosts = () => {
   return (
     <div className="service-post-container">
       <div className='service-section'>
-        <h2>{service.title.rendered}</h2>
+        <h2>{workshop.title.rendered}</h2>
 
-        <div dangerouslySetInnerHTML={{ __html: service.content.rendered }} />
+        <div dangerouslySetInnerHTML={{ __html: workshop.content.rendered }} />
 
         <Link to={`/contact`}>
           <button className="learn-more-btn">Book Now</button>
@@ -73,6 +73,4 @@ const ServicesPosts = () => {
   );
 };
 
-export default ServicesPosts;
-
-
+export default WorkshopPost;

@@ -70,7 +70,6 @@ a {
 // Nav Styling
 
 nav {
-    background-color: $secondary-color;
     padding: 20px;
     top: 0;
     z-index: 1;
@@ -164,12 +163,14 @@ p {
 .hero-heading-section {
 
     margin-top: 40px;
+    
 
     h3 {
         font-family: $font-family-2;
         font-weight: $font-weight-regular;
         font-size: $mobile-h3-size;
         margin-bottom: 5px;
+        text-transform: uppercase;
     }
 
     h1 {
@@ -367,6 +368,39 @@ p {
             margin-bottom: 20px;
             color: $accent-color;
         }
+    }
+}
+
+.service-post-container {
+    padding: 15px;
+    .service-section {
+        h2 {
+            font-family: $font-family-2;
+            font-weight: $font-weight-bold;
+            font-size: $mobile-h2-size;
+            margin-bottom: 5px;
+        }
+
+        h4 {
+            font-family: $font-family-1;
+            font-weight: $font-weight-bold;
+            font-size: $mobile-h4-size;
+            margin-bottom: 50px;
+            color: $accent-color;
+        }
+        
+        h3 {
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 35px;
+        }
+
+        li {
+            margin-bottom: 35px;
+        }
+
     }
 }
 

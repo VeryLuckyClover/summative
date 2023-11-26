@@ -1,35 +1,78 @@
-import React, { useEffect ,useState, useRef } from 'react';
-import emailjs from '@emailjs/browser';
-
-// Component Import
+import React, { useState } from 'react';
+import axios from 'axios';
 import MobileConfirm from '../Components/MobileConfirm';
+
+const formEndpoint = import.meta.env.VITE_APP_WP_API_FORM_ENDPOINT;
 
 const Contact = () => {
   const [showMobileConfirm, setShowMobileConfirm] = useState(false);
-  const form = useRef();
+ 
 
-  const handleContactButtonClick = (e) => {
-    // Perform any necessary actions before showing the confirmation screen
-      e.preventDefault();
-  
-      emailjs.sendForm('service_dari7et', 'template_wp1tamf', form.current, '6ZKqAAWnXWVfVOJvt')
-        .then((result) => {
-            console.log(result.text);
-        }, (error) => {
-            console.log(error.text);
+  // setup state for contact form submission
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
+
+  // state for input values
+  const [firstname, setFirstName] = useState('');
+  const [lastname, setLastName] = useState('');
+  const [subject, setSubject] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  // const  = async (e) => {
+  //   e.preventDefault();
+
+  //   // Use axios to send a POST request to the formEndpoint with the form data
+  //   try {
+  //     const response = await axios.post(formEndpoint, {
+  //       firstname,
+  //       lastname,
+  //       subject,
+  //       email,
+  //       message,
+  //     });
+
+  //     console.log(response.data);
+
+  //     // Assuming the form submission is successful if the response is received
+  //     setSubmitted(true);
+  //   } catch (error) {
+  //     console.error(error);
+  //     setError(true);
+  //   }
+
+  //   setShowMobileConfirm(true);
+  // };
+
+  const handleContactButtonClick = () => {
+    event.preventDefault()
+    // object for our form - append data to it so we can send it
+    const testForm = new FormData()
+    testForm.append('your-name', name)
+    testForm.append('your-email', email)
+    testForm.append('your-message', message)
+
+    //AXIOS CALL
+    axios.post(formEndpoint, testForm, {
+        headers:{
+            "Content-Type":"application/x-www-form-urlencoded"
         }
-      );
-    setShowMobileConfirm(true);
-  };
+    })
+    .then((response) => {
+        console.log(response)
+        setSubmitted(true)
+        setShowMobileConfirm(true);
+        
+    })
+    .catch((error) => {
+        console.log(error);
+        setError(true)
+    })
+}
 
   const handleCloseMobileConfirm = () => {
-    // Handle closing the confirmation screen
     setShowMobileConfirm(false);
   };
-
-  // This connects the form to Email.js and grabs the names and uses them
-
-
 
   return (
     <>
@@ -40,22 +83,57 @@ const Contact = () => {
         </div>
 
         <div className="contact-form-section">
-          <form className="form-content" ref={form}>
-            <input  name="firstname" type="text" className="feedback-input" placeholder="First Name" />
-            <input  name="lastname" type="text" className="feedback-input" placeholder="Last Name" />
-            <input  name="email" type="text" className="feedback-input" placeholder="Email" />
-            <input  name="subject" type="text" className="feedback-input" placeholder="Subject" />
-            <textarea  name="message" className="feedback-input" placeholder="Message"></textarea>
-            {/* Use onClick to call the handleContactButtonClick function */}
-            <input id="hero-btn-styling" type="button" value="Confirm" onClick={handleContactButtonClick} />
+          <form className="form-content">
+            <input
+              type="text"
+              name="firstname"
+              className="feedback-input"
+              placeholder="First Name"
+              value={firstname}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+            <input
+              type="text"
+              name="lastname"
+              className="feedback-input"
+              placeholder="Last Name"
+              value={lastname}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+            <input
+              type="text"
+              name="subject"
+              className="feedback-input"
+              placeholder="Subject"
+              value={subject}
+              onChange={(e) => setSubject(e.target.value)}
+            />
+            <input
+              type="email"
+              name="your-email"
+              className="feedback-input"
+              placeholder="Your Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <textarea
+              name="your-message"
+              className="feedback-input"
+              placeholder="Your Message"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            ></textarea>
+            <input
+              type="button"
+              value="Send Message"
+              className="learn-more-btn"
+              onClick={handleContactButtonClick}
+            />
           </form>
         </div>
 
-        <iframe
-          className="map-content"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2999.8496866029354!2d174.81039367631232!3d-41.24683203793478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d40a116c6d1115b%3A0x1b1c523f4e37b8c2!2sManawa%20Ora%20Mirimiri%20and%20Workshops!5e0!3m2!1sen!2snz!4v1700434776460!5m2!1sen!2snz"
-          loading="lazy"
-        ></iframe>
+        {/* Add your map iframe here */}
+
       </div>
 
       {showMobileConfirm && <MobileConfirm onClose={handleCloseMobileConfirm} />}
@@ -64,4 +142,5 @@ const Contact = () => {
 };
 
 export default Contact;
+
 
