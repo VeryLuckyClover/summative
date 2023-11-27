@@ -32,7 +32,12 @@ const ServicesPosts = () => {
   }, [id, baseUrl]);
 
   if (loading) {
-    return <>Loading...</>;
+    return (
+      <div className="loading-screen">
+        <div className="loading-spinner"></div>
+        Loading...
+      </div>
+    );
   }
 
   // Check if service is null before accessing its properties

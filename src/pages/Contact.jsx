@@ -19,31 +19,6 @@ const Contact = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
-  // const  = async (e) => {
-  //   e.preventDefault();
-
-  //   // Use axios to send a POST request to the formEndpoint with the form data
-  //   try {
-  //     const response = await axios.post(formEndpoint, {
-  //       firstname,
-  //       lastname,
-  //       subject,
-  //       email,
-  //       message,
-  //     });
-
-  //     console.log(response.data);
-
-  //     // Assuming the form submission is successful if the response is received
-  //     setSubmitted(true);
-  //   } catch (error) {
-  //     console.error(error);
-  //     setError(true);
-  //   }
-
-  //   setShowMobileConfirm(true);
-  // };
-
   const handleContactButtonClick = () => {
     event.preventDefault()
     // object for our form - append data to it so we can send it
